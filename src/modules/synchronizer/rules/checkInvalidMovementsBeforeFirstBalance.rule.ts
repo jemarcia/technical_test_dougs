@@ -16,7 +16,7 @@ export class CheckInvalidMovementsBeforeFirstBalanceRule {
         reasons: [
           {
             reason:
-              'Certaines opérations ne peuvent pas être vérifiées car leur date est antérieure au plus ancien point de contrôle, veuillez les retirer pour procéder à la vérification.',
+              'Some movements cannot be verified because their date is older than the oldest checkpoint, please remove them for verification.',
             invalidMovements: movementsBeforeFirstBalance
           }
         ]

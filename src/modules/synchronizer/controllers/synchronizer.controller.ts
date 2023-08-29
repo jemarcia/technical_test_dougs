@@ -17,7 +17,7 @@ export class SynchronizerController {
 
   private readonly logger = new Logger('SynchronizerController');
 
-  @HttpCode(HttpStatus.OK)
+  @HttpCode(HttpStatus.ACCEPTED)
   @Post('/movements/validation')
   async validateMovements(
     @Body()

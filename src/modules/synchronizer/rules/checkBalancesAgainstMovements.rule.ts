@@ -30,7 +30,7 @@ export class CheckBalancesAgainstMovementsRule {
 
       if (currentBalance !== balances[i + 1].balance) {
         const imbalanceReason = {
-          reason: 'Déséquilibre entre mouvements et balance',
+          reason: 'Imbalance between movements and balance',
           balanceDate: balances[i + 1].date,
           expectedBalance: balances[i + 1].balance,
           actualBalance: currentBalance,
@@ -42,7 +42,7 @@ export class CheckBalancesAgainstMovementsRule {
           FindStrictlyEqualMovements.execute(periodMovements);
         if (strictlyEqualMovements.length) {
           imbalanceReason.potentialCauses.push({
-            potentialCause: 'Ces opérations sont strictement égales',
+            potentialCause: 'These movements are strictly equal',
             invalidMovements: strictlyEqualMovements
           });
         }
@@ -53,7 +53,7 @@ export class CheckBalancesAgainstMovementsRule {
         );
         if (sameIDMovements.length) {
           imbalanceReason.potentialCauses.push({
-            potentialCause: 'Ces opérations ont le même identifiant',
+            potentialCause: 'These movements have the same identifier',
             invalidMovements: sameIDMovements
           });
         }
@@ -64,7 +64,7 @@ export class CheckBalancesAgainstMovementsRule {
         );
         if (sameDates.length) {
           imbalanceReason.potentialCauses.push({
-            potentialCause: 'Ces opérations ont la même date',
+            potentialCause: 'These movements have the same date',
             invalidMovements: sameDates
           });
         }
@@ -75,7 +75,7 @@ export class CheckBalancesAgainstMovementsRule {
         );
         if (sameAmounts.length) {
           imbalanceReason.potentialCauses.push({
-            potentialCause: 'Ces opérations ont le même montant',
+            potentialCause: 'These movements have the same amount',
             invalidMovements: sameAmounts
           });
         }

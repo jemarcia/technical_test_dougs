@@ -145,4 +145,31 @@ describe('FindMovementsWithSameField', () => {
       ])
     );
   });
+
+  it('should not group movements', () => {
+    const movements: Array<MovementDto> = [
+      {
+        id: 1,
+        date: new Date('2023-08-29T00:00:00.000Z'),
+        wording: 'Movement 1',
+        amount: 100
+      },
+      {
+        id: 2,
+        date: new Date('2023-08-29T00:00:00.000Z'),
+        wording: 'Movement 2',
+        amount: 150
+      },
+      {
+        id: 3,
+        date: new Date('2023-08-29T00:00:00.000Z'),
+        wording: 'Movement 3',
+        amount: 200
+      }
+    ];
+
+    const results = FindMovementsWithSameField.execute(movements, 'id');
+
+    expect(results).toHaveLength(0);
+  });
 });
