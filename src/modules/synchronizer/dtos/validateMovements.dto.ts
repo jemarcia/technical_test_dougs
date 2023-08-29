@@ -3,7 +3,7 @@ import { MovementDto } from './movement.dto';
 import { Type } from 'class-transformer';
 import { BalanceDto } from './balance.dto';
 
-export class BodyDataDto {
+export class ValidateMovementsDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => MovementDto)

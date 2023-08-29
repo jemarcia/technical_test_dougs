@@ -8,7 +8,8 @@ import {
   Post
 } from '@nestjs/common';
 import { SynchronizerService } from '../services/synchronizer.service';
-import { BodyDataDto } from '../dtos/body.dto';
+import { ValidateMovementsDto } from '../dtos/validateMovements.dto';
+import { ValidationResult } from '../interfaces/validation.interface';
 
 @Controller()
 export class SynchronizerController {
@@ -20,11 +21,14 @@ export class SynchronizerController {
   @Post('/movements/validation')
   async validateMovements(
     @Body()
-    { movements, balances }: BodyDataDto
+    { movements, balances }: ValidateMovementsDto
   ) {
-    const result = this.synchronizerService.checkMovements(movements, balances);
+    const result: ValidationResult = this.synchronizerService.checkMovements(
+      movements,
+      balances
+    );
 
-    if (result === 'Accepted') {
+    if (result.status === 'Accepted') {
       return { statusCode: HttpStatus.ACCEPTED, message: 'Accepted' };
     } else {
       throw new HttpException(
